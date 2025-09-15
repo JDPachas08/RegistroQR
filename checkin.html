@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Check-in • Lucciana</title>
+
+  <!-- Fuentes y icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --morado-oscuro: #663399;
+      --morado-claro: #8B4A9C;
+      --dorado: goldenrod;
+      --card-bg: rgba(255,255,255,0.95);
+      --text: #2c1810;
+    }
+
+    html,body{height:100%;margin:0;font-family:'Playfair Display', serif;color:var(--text);}
+
+    /* fondo igual que la invitación */
+    body{
+      background: linear-gradient(rgba(102,51,153,0.22), rgba(102,51,153,0.22)), url('https://i.ibb.co/hFSLy7tb/Gemini-Generated-Image-a5l9a9a5l9a9a5l9.png') no-repeat center center fixed;
+      background-size: cover;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+    }
+
+    /* tarjeta central */
+    .card{
+      width:100%;
+      max-width:760px;
+      background: var(--card-bg);
+      border-radius:24px;
+      box-shadow: 0 20px 40px rgba(102,51,153,0.25);
+      border: 3px solid var(--morado-oscuro);
+      padding:36px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* mariposas decorativas (esquinas) */
+    .butterfly {
+      position:absolute;
+      width:88px;
+      opacity:0.9;
+      transform-origin:center;
+      filter: drop-shadow(0 6px 8px rgba(0,0,0,0.15));
+      animation: floaty 4s ease-in-out infinite;
+    }
+    .butterfly.left { left:14px; top:14px; }
+    .butterfly.right { right:14px; top:14px; transform:scaleX(-1); animation-delay:0.6s; }
+
+    @keyframes floaty {
+      0% { transform: translateY(0) rotate(-3deg); }
+      50% { transform: translateY(-8px) rotate(6deg); }
+      100% { transform: translateY(0) rotate(-3deg); }
+    }
+
+    .title {
+      text-align:center;
+      color:var(--morado-oscuro);
+      font-size:1.05rem;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+
+    .name {
+      text-align:center;
+      font-family:'Dancing Script', cursive;
+      font-size:3rem;
+      color:var(--dorado);
+      margin:10px 0 6px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.12);
+    }
+
+    .subtitle {
+      text-align:center;
+      color:var(--morado-claro);
+      font-size:1.05rem;
+      margin-bottom:18px;
+      font-style:italic;
+    }
+
+    .info-box {
+      display:flex;
+      gap:18px;
+      justify-content:center;
+      align-items:center;
+      margin:20px 0 10px;
+      flex-wrap:wrap;
+    }
+
+    .chip {
+      background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+      border-radius:12px;
+      padding:14px 20px;
+      min-width:140px;
+      text-align:center;
+      box-shadow: 0 6px 18px rgba(102,51,153,0.12);
+      border:1px solid rgba(255,255,255,0.12);
+    }
+
+    .chip .label { font-size:0.85rem; color:#fde8b6; display:block; margin-bottom:6px; text-transform:uppercase; letter-spacing:1px; }
+    .chip .value { font-size:1.6rem; font-weight:700; color:white; }
+
+    /* mensaje de bienvenida */
+    .welcome {
+      text-align:center;
+      margin-top:18px;
+      font-size:1rem;
+      color:#fff;
+      background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      padding:12px 18px;
+      border-radius:10px;
+      display:inline-block;
+    }
+
+    /* footer de acciones (opcional) */
+    .actions {
+      margin-top:22px;
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .btn {
+      background:var(--dorado);
+      color:#111;
+      border:none;
+      padding:12px 22px;
+      border-radius:28px;
+      cursor:pointer;
+      font-weight:700;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      text-decoration:none;
+    }
+    .btn.secondary {
+      background:transparent;
+      color:var(--morado-oscuro);
+      border:2px solid rgba(102,51,153,0.12);
+    }
+
+    /* responsive */
+    @media (max-width:520px){
+      .butterfly { width:56px; }
+      .name { font-size:2.2rem; }
+      .chip { min-width:110px; padding:12px 14px; }
+      .info-box { gap:10px; }
+      .card { padding:22px; border-radius:18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="main" aria-live="polite">
+    <!-- decorativas -->
+    <img class="butterfly left" src="https://i.ibb.co/xkNd5xL/pngtree-hand-drawn-purple-butterfly-graphic-for-crafts-and-decorations-png-image-16151116.png" alt="" aria-hidden="true">
+    <img class="butterfly right" src="https://i.ibb.co/p6x2RD2B/silueta-quincea-era.png" alt="" aria-hidden="true">
+
+    <div class="title">Invitación • Mis 15 Años</div>
+    <div class="name" id="nombre">Invitado</div>
+    <div class="subtitle">¡Bienvenido a la celebración de Lucciana!</div>
+
+    <div class="info-box" id="infoBox">
+      <div class="chip">
+        <div class="label">ID</div>
+        <div class="value" id="idVal">—</div>
+      </div>
+
+      <div class="chip">
+        <div class="label">Código</div>
+        <div class="value" id="codeVal">—</div>
+      </div>
+    </div>
+
+    <div class="welcome" id="mensaje">Muestra este código en la entrada para tu check-in.</div>
+
+    <div class="actions" style="display:none;" id="adminActions">
+      <!-- Si quieres hacer una acción extra (p. ej. marcar ingreso remoto) puedes cambiar la URL aquí -->
+      <a id="openLink" class="btn" target="_blank" rel="noopener">Abrir registro (admin)</a>
+      <button class="btn secondary" onclick="window.location.href = window.location.href">Refrescar</button>
+    </div>
+  </div>
+
+  <script>
+    // leer parámetros de URL
+    function getParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    // obtener y decodificar
+    const rawId = getParam('id') || '';
+    const rawNombre = getParam('nombre') || '';
+    const nombre = rawNombre ? decodeURIComponent(rawNombre) : 'Invitado';
+    const id = rawId;
+
+    // mostrar en la UI
+    document.getElementById('nombre').textContent = nombre;
+    document.getElementById('idVal').textContent = id || 'Sin ID';
+    document.getElementById('codeVal').textContent = id ? id.replace(/^rec/,'') : '—';
+
+    // Opcional: si quieres mostrar un link admin (ej. a Airtable), construye aquí la url
+    // const airtableAdminUrl = 'https://airtable.com/blahblah'; // <- si tienes un link de visualización
+    // document.getElementById('openLink').href = airtableAdminUrl + '?filterByFormula=' + encodeURIComponent("{RecordID}='" + id + "'");
+
+    // Mostrar acciones admin solo si hay cierto parámetro (ej. ?admin=1)
+    if (getParam('admin') === '1') {
+      document.getElementById('adminActions').style.display = 'flex';
+    }
+  </script>
+</body>
+</html>
