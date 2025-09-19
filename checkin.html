@@ -175,20 +175,16 @@
     <div class="welcome" id="mensaje">Muestra este código en la entrada para tu check-in.</div>
   </div>
 
-  <script>
-    function getParam(name) {
-      const params = new URLSearchParams(window.location.search);
-      return params.get(name);
-    }
+ <script>
+  // Leer parámetros de la URL
+  const params = new URLSearchParams(window.location.search);
+  const nombre = params.get("NombreCompleto") || "Invitado";
+  const ticket = params.get("TicketCode") || "—";
 
-    const rawNombre = getParam('NombreCompleto') || '';
-    const rawTicket = getParam('TicketCode') || '';
-    const nombre = rawNombre ? decodeURIComponent(rawNombre) : 'Invitado';
-    const ticket = rawTicket ? decodeURIComponent(rawTicket) : '—';
+  // Insertar en el HTML
+  document.getElementById("nombre").textContent = nombre;
+  document.getElementById("ticket").textContent = ticket;
+</script>
 
-    document.getElementById('nombre').textContent = nombre;
-    document.getElementById('nombreVal').textContent = nombre;
-    document.getElementById('ticketVal').textContent = ticket;
-  </script>
 </body>
 </html>
