@@ -157,7 +157,7 @@
     <img class="butterfly right" src="https://i.ibb.co/p6x2RD2B/silueta-quincea-era.png" alt="" aria-hidden="true">
 
     <div class="title">Invitación • Mis 15 Años</div>
-    <div class="name" id="nombre">Invitado</div>
+    <h2 id="titulo-invitacion" class="titulo-dorado">Lucciana</h2>
     <div class="subtitle">¡Bienvenido a la celebración de Lucciana!</div>
 
     <div class="info-box" id="infoBox">
@@ -177,16 +177,16 @@
 
 <script>
   // Leer parámetros de la URL
-  const params = new URLSearchParams(window.location.search);
-  const nombre = params.get("NombreCompleto") || "Invitado";
-  const ticket = params.get("TicketCode") || "—";
+  const urlParams = new URLSearchParams(window.location.search);
+  const nombre = urlParams.get('NombreCompleto') || "-";
+  const ticket = urlParams.get('TicketCode') || "-";
 
-  // Asignar al nombre principal (arriba en dorado)
+  // Insertar valores en el HTML
   document.getElementById("nombre").textContent = nombre;
+  document.getElementById("ticket").textContent = ticket;
 
-  // Asignar a los cuadros inferiores
-  document.getElementById("nombreVal").textContent = nombre;
-  document.getElementById("ticketVal").textContent = ticket;
+  // Título dorado siempre Lucciana
+  document.getElementById("titulo-invitacion").textContent = "Lucciana";
 </script>
 
 
